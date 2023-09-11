@@ -1,13 +1,109 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1749A5 0%, #113375 100%);
+}
+::-webkit-scrollbar-track {
+  background-color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+.partners {
+  min-height: calc(100vh - 56px);
+}
+.home__image {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+}
+.header {
+  box-shadow: 0 6px 20px rgba(165, 166, 180, 0.13);
+}
+.footer {
+  background: linear-gradient(180deg, #1749a5 0%, #113375 100%);
+}
+.footer__card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+}
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.mySwiper {
+  height: 450px;
+  width: 100%;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  height: 42px !important;
+  width: 42px !important;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18039) !important;
+  color: #ffffff;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px !important;
+  font-weight: bold;
+  color: white !important;
+}
+.swiper-pagination-bullet-active {
+  background: #ffffff !important;
+}
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  border: 2px solid #ffffff !important;
+  margin: 14px !important;
+}
+
+.sidebar__item::before {
+  content: "";
+  position: absolute;
+  top: calc(100% - 1px);
+  height: 2px;
+  width: 36px;
+  background-color: #4cb0fe;
+  transition: 0.3s;
+}
+.sidebar__item1:hover::before {
+  content: "";
+  position: absolute;
+  top: calc(100% - 1px);
+  height: 2px;
+  width: 36px;
+  background-color: #4cb0fe;
+  transition: 0.3s;
+}
+
+@media (max-width: 500px) {
+  .mySwiper {
+    height: 250px;
+  }
+  .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    margin: 8px !important;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 15px !important;
+    font-weight: 500;
+    color: white !important;
+  }
+}
+@media (min-width: 501px) and (max-width: 768px) {
+  .mySwiper {
+    height: 350px;
+  }
 }
