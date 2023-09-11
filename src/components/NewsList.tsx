@@ -30,27 +30,27 @@ function NewsList({item} : NewsListTypes) {
 
 
   return (
-    <div className="py-8 border-t border-[#E6E6F2] flex">
-    <div className="w-1/5">
-      <h5 className="text-sm text-[#8384A3]">
+    <div className="py-8 border-t border-[#E6E6F2] flex flex-col-reverse lg:flex-row">
+    <div className="w-full mt-4 lg:mt-0 lg:w-1/6">
+      <h5 className="text-sm text-[#8384A3] text-right font-bold lg:font-normal lg:text-left">
         {moment(item.updated_at).format("DD MMM YYYY")}
       </h5>
     </div>
-    <div className="w-4/5">
+    <div className="w-full lg:w-5/6">
       <h3 className="text-[#232455] mb-3.5 text-xl font-bold">
         {item.title_uz}
       </h3>
       <p className="text-sm text-[#232455] mb-3.5">
         {trimString(item.description_uz, 300)}
       </p>
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-col sm:flex-row">
         <Link
           to={`${item.slug}`}
           className="text-blue-400 text-sm"
         >
           To'liq o'qish
         </Link>
-        <div className="flex items-center">
+        <div className="flex items-center flex-wrap">
           {item.new_tags.length > 0 && (
             <div className="mr-2.5 text-[#8384A3]">
               <BsTagsFill />
@@ -58,7 +58,7 @@ function NewsList({item} : NewsListTypes) {
           )}
           {item.new_tags.length > 0 &&
             item.new_tags.map((tag) => (
-              <div className="flex">
+              <div className="flex flex-wrap" key={tag.id}>
                 <p className="mr-2.5 text-sm">{tag.tag.name_uz}</p>
               </div>
             ))}

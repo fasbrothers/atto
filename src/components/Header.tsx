@@ -56,7 +56,7 @@ function Header() {
             </div>
             <Link
               to="/"
-              className="bg-[#00C68A] py-[5px] px-[10px] sm:p-6 text-sm text-white font-bold"
+              className="bg-[#00C68A] py-[5px] px-[10px] sm:p-5 text-sm text-white font-bold"
             >
               Shaxsiy kabinet
             </Link>
