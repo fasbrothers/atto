@@ -10,6 +10,7 @@ interface NewsSidebarProps {
   setTag: (tag: string) => void;
   toggleButton: boolean;
   setToggleButton: (toggleButton: boolean) => void;
+  handlerInputDebounce: (value: string) => void;
 }
 
 function NewsSidebar({
@@ -19,6 +20,7 @@ function NewsSidebar({
   setTag,
   toggleButton,
   setToggleButton,
+  handlerInputDebounce
 }: NewsSidebarProps) {
 
   const handleClearButton = () => {
@@ -26,12 +28,17 @@ function NewsSidebar({
     setTag("")
   }
 
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(event.target.value)
+    handlerInputDebounce(event.target.value)
+  }
+
   return (
     <div className="md:sticky h-full md:mr-5 lg:mr-0 md:top-10 w-full lg:w-1/4 md:my-20 lg:pr-12 mb-14 lg:mb-0">
       <label className="relative block">
         <input
           value={input}
-          onChange={(event) => setInput(event.target.value)}
+          onChange={handleInput}
           className="block bg-white w-full border border-slate-400 py-4 pr-9 pl-3 shadow-sm focus:outline-none focus:ring-1 sm:text-sm"
           type="text"
           name="search"

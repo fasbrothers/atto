@@ -1,7 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
 
-
 const LazyLayout = React.lazy(() => import("../layouts/Layout"));
 const LazyHome = React.lazy(() => import("../pages/Home/Home"));
 const LazyValidators = React.lazy(() =>
