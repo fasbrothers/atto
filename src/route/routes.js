@@ -11,6 +11,7 @@ const LazySidebarLayout = React.lazy(() => import("../layouts/SidebarLayout"));
 const LazyTariffs = React.lazy(() => import("../pages/Tariffs/Tariffs"));
 const LazyNews = React.lazy(() => import("../pages/News/News"));
 const LazyNotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
+const LazySingleNews = React.lazy(() => import("../pages/SingleNews/[slug]"));
 
 export default function Router() {
   let element = useRoutes([
@@ -20,6 +21,7 @@ export default function Router() {
         { path: "/", element: <LazyHome /> },
         { path: "/news", element: <LazyNews /> },
         { path: "*", element: <LazyNotFound /> },
+        { path: "news/:id", element: <LazySingleNews /> },
         {
           element: <LazySidebarLayout />,
           children: [
