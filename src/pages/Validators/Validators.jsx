@@ -10,7 +10,7 @@ import { images, texts } from "./ValidatorsData";
 
 function Validators() {
   return (
-    <div className="lg:w-3/4">
+    <div className="lg:w-3/4 validators">
       <h2 className="font-bold text-lg text-center lg:text-left lg:text-2xl text-[#232455] mb-4 lg:mb-11">
         Validatorlar
       </h2>

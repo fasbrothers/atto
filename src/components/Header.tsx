@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiSolidDownArrow } from "react-icons/bi";
+import { MdOutlineArrowDropDown } from "react-icons/md";
 import { navigation } from "../data/navigation";
 import { FiMenu } from "react-icons/fi";
 
@@ -21,7 +22,7 @@ function Header() {
                       <span className="mr-1 text-sm text-[#232455]">
                         {item.title}
                       </span>
-                      <BiSolidDownArrow className="text-[7px]" />
+                      <MdOutlineArrowDropDown />
                     </button>
                   ) : (
                     <button className="py-5 px-5 inline-flex items-center">

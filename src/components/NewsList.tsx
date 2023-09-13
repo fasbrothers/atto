@@ -45,7 +45,7 @@ function NewsList({item} : NewsListTypes) {
       </p>
       <div className="flex justify-between flex-col sm:flex-row">
         <Link
-          to={`${item.slug}`}
+          to={`/news/${item.slug}`}
           className="text-blue-400 text-sm"
         >
           To'liq o'qish
