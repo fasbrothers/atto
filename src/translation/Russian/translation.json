@@ -1,0 +1,98 @@
+{
+  "navigation": [
+    {
+      "name": "carriers",
+      "title": "Перевозчикам",
+      "nav": [
+        {
+          "name": "Валидаторы",
+          "path": "/validatorlar",
+          "slug": "validatorlar"
+        },
+        {
+          "name": "Условия сотрудничества",
+          "path": "/hamkorlik-shartlari",
+          "slug": "hamkorlik-shartlari"
+        }
+      ],
+      "to": "carriers"
+    },
+    {
+      "name": "news",
+      "title": "Новости",
+      "nav": [
+        {
+          "name": "Lorem ipsum dolor sit amet",
+          "path": ""
+        }
+      ],
+      "to": "news"
+    },
+    {
+      "name": "about",
+      "title": "О нас",
+      "nav": [
+        {
+          "name": "О Компании",
+          "path": "/kompaniya-haqida"
+        },
+        {
+          "name": "Документы",
+          "path": "/hujjatlar"
+        },
+        {
+          "name": "Bакансии",
+          "path": "/bosh-ish-orinlari"
+        }
+      ],
+      "to": "about"
+    },
+    {
+      "name": "contracts",
+      "title": "Контакты",
+      "to": "contracts"
+    },
+    {
+      "name": "passengers",
+      "title": "Пассажирам",
+      "nav": [
+        {
+          "name": "Транспортные карты",
+          "path": "/transport-kartalari",
+          "slug": "transport-kartalari"
+        },
+        {
+          "name": "Льготные транспортные карты",
+          "path": "/imtiyozli-transport-kartalari",
+          "slug": "imtiyozli-transport-kartalari"
+        },
+        {
+          "name": "Тарифные планы",
+          "path": "/tariflar",
+          "slug": "tariflar"
+        },
+        {
+          "name": "Пополнение",
+          "path": "/to'ldirish",
+          "slug": "to'ldirish"
+        },
+        {
+          "name": "СМС информирование",
+          "path": "/sms-xabarnoma",
+          "slug": "sms-xabarnoma"
+        },
+        {
+          "name": "Часто задаваемые вопросы",
+          "path": "/savollar",
+          "slug": "savollar"
+        },
+        {
+          "name": "Инструкции",
+          "path": "/ko'rsatmalar",
+          "slug": "ko'rsatmalar"
+        }
+      ],
+      "to": "passengers"
+    }
+  ]
+}

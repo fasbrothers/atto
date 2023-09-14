@@ -1,10 +1,27 @@
 import React from "react";
-import { navigation } from "../data/navigation";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import FooterBottom from "./FooterBottom";
 
+interface Navigation {
+  name: string
+  title: string
+  nav?: Nav[]
+  to: string
+}
+
+interface Nav {
+  name: string
+  path: string
+  slug?: string
+}
+
+
 function Footer() {
-  const navbar = [navigation[0], navigation[2], navigation[4]];
+  const { t } = useTranslation();
+  const nav: Navigation[] = t('navigation',{returnObjects: true}) as Navigation[]
+
+  const navbar = [nav[0], nav[2], nav[4]];
   return (
     <div className="footer px-6 lg:px-4 ">
       <div className="xl:w-[1260px] mx-auto pt-[50px] pb-6 flex w-full flex-col xl:flex-row xl:px-4">

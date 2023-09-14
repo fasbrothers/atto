@@ -15,7 +15,7 @@ function Validators() {
         Validatorlar
       </h2>
       <Swiper
-        pagination={true}
+        pagination={{ clickable: true }}
         navigation={true}
         modules={[Navigation, Pagination]}
         className="mySwiper"

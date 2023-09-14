@@ -6,11 +6,12 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import SwiperImage from "./SwiperImage";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { ImFacebook } from "react-icons/im";
 import { FaTelegramPlane } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
+import changeLanguage from "../utils/changeLanguage";
 
 const icons = [
   {
@@ -28,10 +29,12 @@ const icons = [
 ];
 
 function SingleNewsDescription({ news }) {
+  const language = useLocation().pathname.split("/")[1];
+
   return (
     <div className="lg:w-3/4">
       <h2 className="lg:text-2xl text-[#232455] text-lg text-center lg:text-left font-semibold">
-        {news?.title_uz}
+        {changeLanguage(news?.title_uz, news?.title_ru, language)}
       </h2>
       <p className="mt-4 text-[#8384A3] text-sm">
         {moment(news.updated_at).format("DD MMM YYYY")}
@@ -47,7 +50,9 @@ function SingleNewsDescription({ news }) {
       </div>
       <div
         className="mt-8 text-[#232455] text-sm space-y-3 leading-loose"
-        dangerouslySetInnerHTML={{ __html: news.content_uz }}
+        dangerouslySetInnerHTML={{
+          __html: changeLanguage(news.content_uz, news.content_ru, language),
+        }}
       ></div>
       <div className="flex items-center flex-wrap justify-between mt-4 py-7 border-t border-[#E6E6F2]">
         <Link to="/news" className="flex items-center">

@@ -1,33 +1,15 @@
 import React from 'react'
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsTagsFill } from "react-icons/bs";
+import { NewsTypes } from '../pages/News/News.types';
+import changeLanguage from '../utils/changeLanguage';
+import trimString from '../utils/trimString';
 
-type NewsListTypes = {
-  item: {
-    id: number;
-    title_uz: string;
-    description_uz: string;
-    slug: string;
-    updated_at: string;
-    new_tags: {
-      id: number;
-      tag: {
-        name_uz: string;
-      };
-    }[];
-  }
-}
 
-function NewsList({item} : NewsListTypes) {
 
-  function trimString(str: string, length: number): string {
-    if(str === null){
-      return ""
-    }
-    return str.length > length ? str.substring(0, length) + "..." : str;
-  }
-
+function NewsList({item} : {item: NewsTypes}) {
+  const language = useLocation().pathname.split("/")[1];
 
   return (
     <div className="py-8 border-t border-[#E6E6F2] flex flex-col-reverse lg:flex-row">
@@ -38,17 +20,17 @@ function NewsList({item} : NewsListTypes) {
     </div>
     <div className="w-full lg:w-5/6">
       <h3 className="text-[#232455] mb-3.5 text-xl font-bold">
-        {item.title_uz}
+        {changeLanguage(item.title_uz, item.title_ru, language)}
       </h3>
       <p className="text-sm text-[#232455] mb-3.5">
-        {trimString(item.description_uz, 300)}
+        {trimString(changeLanguage(item.description_uz, item.description_ru, language), 300)}
       </p>
       <div className="flex justify-between flex-col sm:flex-row">
         <Link
-          to={`/news/${item.slug}`}
+          to={`/${language}/news/${item.slug}`}
           className="text-blue-400 text-sm"
         >
-          To'liq o'qish
+          {language === "uz" ? "To'liq o'qish" : "Читать полностью"} 
         </Link>
         <div className="flex items-center flex-wrap">
           {item.new_tags.length > 0 && (

@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 import React from "react";
 
 const LazyLayout = React.lazy(() => import("../layouts/Layout"));
@@ -16,18 +16,31 @@ const LazySingleNews = React.lazy(() => import("../pages/SingleNews/[slug]"));
 export default function Router() {
   let element = useRoutes([
     {
-      element: <LazyLayout />,
+      path: "/",
       children: [
-        { path: "/", element: <LazyHome /> },
-        { path: "/news", element: <LazyNews /> },
-        { path: "*", element: <LazyNotFound /> },
-        { path: "news/:id", element: <LazySingleNews /> },
         {
-          element: <LazySidebarLayout />,
+          index: true, 
+          element: <Navigate to="/uz" />,
+        },
+        {
+          path: ":locale",
+          element: <LazyLayout />,
           children: [
-            { path: "carriers/validatorlar", element: <LazyValidators /> },
-            { path: "carriers/hamkorlik-shartlari", element: <LazyPartners /> },
-            { path: "passengers/tariflar", element: <LazyTariffs /> },
+            { path: "", element: <LazyHome /> },
+            { path: "news", element: <LazyNews /> },
+            { path: "*", element: <LazyNotFound /> },
+            { path: "news/:id", element: <LazySingleNews /> },
+            {
+              element: <LazySidebarLayout />,
+              children: [
+                { path: "carriers/validatorlar", element: <LazyValidators /> },
+                {
+                  path: "carriers/hamkorlik-shartlari",
+                  element: <LazyPartners />,
+                },
+                { path: "passengers/tariflar", element: <LazyTariffs /> },
+              ],
+            },
           ],
         },
       ],

@@ -1,11 +1,49 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { BiSolidDownArrow } from "react-icons/bi";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdOutlineArrowDropDown } from "react-icons/md";
-import { navigation } from "../data/navigation";
 import { FiMenu } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
+
+
+
+export interface Navigation {
+  name: string
+  title: string
+  nav?: Nav[]
+  to: string
+}
+
+export interface Nav {
+  name: string
+  path: string
+  slug?: string
+}
+
 
 function Header() {
+  const [language, setLanguage] = useState(true)
+  const url = useLocation().pathname.split('/')[1]
+  const otherUrl = useLocation().pathname.split("/").slice(2).join("/");
+  const navigate = useNavigate()
+  const { t, i18n } = useTranslation();
+
+  const nav: Navigation[] = t('navigation',{returnObjects: true}) as Navigation[]
+
+  const handleLanguage = ()=>{
+    setLanguage(!language)
+    i18n.changeLanguage(language ? 'ru' : 'uz')
+    localStorage.setItem('language', url === 'ru' ? 'uz' : 'ru') 
+    console.log(url)
+
+    // replace url
+    if(url === 'ru'){
+      navigate('/uz/' + otherUrl)
+    }else{
+      navigate('/ru/' + otherUrl)
+    }
+
+  }
+
   return (
     <div className="header">
       <div className="xl:w-[1260px] mx-auto px-5 ">
@@ -15,7 +53,7 @@ function Header() {
               <img src="https://atto.uz/_nuxt/static/img/svg/logo.svg" alt="" />
             </Link>
             <div className="hidden xl:block">
-              {navigation.map((item, index) => (
+              {nav && nav.length > 0 && nav?.map((item, index) => (
                 <div key={index} className="dropdown inline-block relative">
                   {item.nav && item.nav.length > 0 ? (
                     <button className="py-5 px-5 inline-flex items-center">
@@ -52,8 +90,19 @@ function Header() {
               +998(78)140-08-08
             </p>
             <div className="sm:flex px-4 items-center mr-3 hidden">
-              <p className="mr-2">Uz</p>
-              <BiSolidDownArrow className="text-[7px]" />
+                <div className="dropdown inline-block relative">
+                    <button className="py-5 px-5 inline-flex items-center">
+                      <span className="mr-1 text-sm text-[#232455]">
+                        {url === "uz"  ? 'Uz' : 'Ru'}
+                      </span>
+                      <MdOutlineArrowDropDown />
+                    </button>
+                  <ul className="dropdown-menu absolute hidden shadow z-50">
+                      <button onClick={handleLanguage} className="bg-white hover:bg-blue-400 hover:text-white py-3 px-5 block  text-sm w-full">
+                        {language ? 'Ru' : 'Uz'}
+                      </button>
+                  </ul>
+                </div>
             </div>
             <Link
               to="/"

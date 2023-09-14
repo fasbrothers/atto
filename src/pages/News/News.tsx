@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { NewsTypes } from "./News.types";
 import NotFound from "../NotFound/NotFound";
 import debounce from "lodash.debounce";
+import { useLocation } from "react-router-dom";
 
 function News() {
   const [current, setCurrent] = useState(1);
@@ -16,6 +17,7 @@ function News() {
   const [tag, setTag] = useState("");
   const [toggleButton, setToggleButton] = useState(false);
   const [value, setValue] = React.useState("");
+
 
   const onChange: PaginationProps["onChange"] = (page) => {
     setCurrent(page);
@@ -49,7 +51,6 @@ function News() {
       `https://webadminapi.atto.uz/api/site/news?${inputValue}${tagValue}&page=${current}`
     );
     const {data} = await response.data;
-    console.log("fetched")
     return data
   };
 
@@ -85,7 +86,7 @@ function News() {
           ) : (
             news?.map((item: object, id: number) => (
               <div key={id}>
-                <NewsList item={item as NewsTypes} />
+                <NewsList item={item as NewsTypes}  />
               </div>
             ))
           )}

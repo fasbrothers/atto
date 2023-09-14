@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import LoadingLazy from './components/LoadingLazy';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import "./i18n";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

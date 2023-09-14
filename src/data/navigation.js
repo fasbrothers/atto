@@ -14,7 +14,7 @@ export const navigation = [
         slug: "hamkorlik-shartlari",
       },
     ],
-    to: "./carriers",
+    to: "carriers",
   },
   {
     name: "news",
@@ -25,7 +25,7 @@ export const navigation = [
         path: "",
       },
     ],
-    to: "/news",
+    to: "news",
   },
   {
     name: "about",
@@ -44,12 +44,12 @@ export const navigation = [
         path: "/bosh-ish-orinlari",
       },
     ],
-    to: "/about",
+    to: "about",
   },
   {
     name: "contracts",
     title: "Kontraklar",
-    to: "/contracts",
+    to: "contracts",
   },
   {
     name: "passengers",
@@ -91,6 +91,6 @@ export const navigation = [
         slug: "ko'rsatmalar",
       },
     ],
-    to: "/passengers",
+    to: "passengers",
   },
 ];

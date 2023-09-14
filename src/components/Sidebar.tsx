@@ -16,11 +16,11 @@ interface Props {
 }
 
 function Sidebar({ navigation }: Props) {
-  const title = useLocation().pathname.split("/")[2];
+  const title = useLocation().pathname.split("/")[3];
 
   return (
     <div className="lg:sticky h-full lg:top-0 w-full lg:w-1/4 lg:my-16 lg:pr-12 mb-14 lg:mb-0">
-      {navigation.nav?.map((item, index) => (
+      {navigation?.nav?.map((item, index) => (
         <li
           key={index}
           className={`list-none py-2 lg:py-4 border-b border-[#EEEFF8] ${

@@ -7,7 +7,7 @@ import SingleNewsSidebar from "../../components/SingleNewsSidebar";
 import SingleNewsDescription from "../../components/SingleNewsDescription.jsx";
 
 function SingleNews() {
-  const slug = useLocation().pathname.split("/")[2];
+  const slug = useLocation().pathname.split("/")[3];
 
   const getData = async () => {
     const response = await axios(
